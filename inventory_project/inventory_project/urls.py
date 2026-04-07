@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from inventory.views import item_list, edit_item, delete_item
+from inventory.views import item_list_api, edit_item, delete_item, item_detail_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('items/', item_list), 
+    path('api/items/', item_list_api, name='item_list_api'),
     path('items/edit/<int:pk>/', edit_item, name='edit_item'),
-    path('items/delete/<int:pk>/', delete_item, name='delete_item')
+    path('items/delete/<int:pk>/', delete_item, name='delete_item'),
+    path('api/items/<int:pk>/', item_detail_api, name='item_detail_api'),
 ]
+
